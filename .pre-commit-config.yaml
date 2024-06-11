@@ -1,0 +1,40 @@
+exclude: ^LICENSE/|\.(html|csv|svg|md)$
+default_stages: [commit, push]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.1
+    hooks:
+      - id: absolufy-imports
+        files: ^gs_api_server/
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks:
+      - id: add-trailing-comma
+        name: Add trailing comma
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.16
+    hooks:
+      - id: validate-pyproject
+  - repo: https://github.com/python/black
+    rev: 24.2.0
+    hooks:
+      - id: black
+        additional_dependencies: ["black[jupyter]"]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.3.2
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+        additional_dependencies: ["ruff[jupyter]"]
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+    - id: bandit
+      args: ["-c", "pyproject.toml"]
+      additional_dependencies: ["bandit[toml]"]

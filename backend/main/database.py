@@ -8,6 +8,7 @@ from backend.main.config import settings
 
 def get_engine():
     application_name = "gs_demo_development"
+
     if settings.production:
         application_name = "gs_demo_production"
 

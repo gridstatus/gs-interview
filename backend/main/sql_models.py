@@ -23,6 +23,7 @@ class CaisoFuelMix(Base):
     __tablename__ = "caiso_fuel_mix"
 
     coal = Column("coal", Integer)
+
     wind = Column("wind", Integer)
     other = Column("other", Integer)
     solar = Column("solar", Integer)
