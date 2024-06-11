@@ -3,7 +3,7 @@ import os
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from gs_demo.main.config import settings
+from backend.main.config import settings
 
 
 def get_engine():
@@ -15,12 +15,12 @@ def get_engine():
         "ssl": "require",
         "server_settings": {"application_name": application_name},
     }
-    DB_URL = f"postgresql+asyncpg://{settings.postgres_user}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}"  # noqa
+    db_url = f"postgresql+asyncpg://{settings.postgres_user}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}"  # noqa
 
     # set echo to True to log all SQL statements
     log_sql = os.getenv("LOG_SQL", "").lower() in ["true", "1"]
 
-    return create_async_engine(DB_URL, echo=log_sql, connect_args=ssl_args)
+    return create_async_engine(db_url, echo=log_sql, connect_args=ssl_args)
 
 
 def get_async_session():
@@ -35,3 +35,12 @@ async def get_db():
         # Set a timeout for all statements in this session
         await session.execute(text(f"SET statement_timeout TO '{timeout}'"))
         yield session
+
+
+async def run_query(query):
+    async_session = get_async_session()
+
+    async with async_session() as session:
+        async with session.begin():
+            result = await session.execute(query)
+            return result

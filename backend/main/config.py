@@ -1,5 +1,6 @@
 import os
 
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
 
@@ -8,6 +9,8 @@ class Settings(BaseSettings):
     Settings for the application.
     Throws an exception if a required environment variable is missing.
     """
+
+    load_dotenv()
 
     production: bool = False
 
