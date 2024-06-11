@@ -1,25 +1,57 @@
-# Install python
+## Install pyenv
 
-```
+* Depends on os and your preferred way of installing tools
+
+## Install python using pyenv
+
+```bash
 pyenv install
 pyenv rehash
 ```
 
-## Install python packages
+## Install poetry
 
-```
+* Depends on os and your preferred way of installing tools
+
+## Install python packages using poetry
+
+```bash
+poetry config virtualenvs.in-project true
 poetry install --all-extras
 ```
 
+## Install nvm
+
+* Depends on os and your preferred way of installing tools
+
 ## Install node
 
+```bash
+nvm install
+nvm use
 ```
-nodenv install
-nodenv rehash
-```
+
+## Install npm
+
+* Depends on os and your preferred way of installing tools
 
 ## Install node packages
 
-```
+```bash
 npm install
+```
+
+
+## Running App
+
+### Frontend
+
+```bash
+npm run start
+```
+
+### Backend
+
+```bash
+poetry run uvicorn app.main:app --reload
 ```

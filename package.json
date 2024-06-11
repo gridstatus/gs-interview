@@ -2,6 +2,9 @@
   "name": "gs-demo",
   "version": "0.1.0",
   "private": true,
+  "engine": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@braintree/sanitize-url": "^7.0.0",
