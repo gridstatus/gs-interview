@@ -1,7 +1,10 @@
 from datetime import datetime
 
-from backend.main.database import run_query
 from fastapi import FastAPI
+from sqlalchemy import select
+
+from backend.main.database import get_data_as_dict
+from backend.main.sql_models import table_name_to_model
 
 app = FastAPI()
 
@@ -18,7 +21,8 @@ async def get_current_time():
 
 
 @app.get("/data")
-async def get_data(params: str):
-    query = f"SELECT * FROM ercot_load_forecast WHERE interval_start_utc = '{params}'"
-    result = await run_query(query)
+async def get_data(table_name: str, limit: int = 10):
+    model = table_name_to_model(table_name)
+    query = select(model).limit(limit)
+    result = await get_data_as_dict(query)
     return result

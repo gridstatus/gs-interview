@@ -38,3 +38,12 @@ class CaisoFuelMix(Base):
     small_hydro = Column("small_hydro", Integer)
     interval_end_utc = Column("interval_end_utc", DateTime)
     interval_start_utc = Column("interval_start_utc", DateTime, primary_key=True)
+
+
+def table_name_to_model(table_name):
+    if table_name == "ercot_load_forecast":
+        return ErcotLoadForecast
+    elif table_name == "caiso_fuel_mix":
+        return CaisoFuelMix
+    else:
+        raise ValueError(f"Table {table_name} not found in models.")
