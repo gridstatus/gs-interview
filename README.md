@@ -53,5 +53,5 @@ npm run start
 ### Backend
 
 ```bash
-poetry run uvicorn app.main:app --reload
+poetry run uvicorn backend.main.main:app --port 8000 --reload
 ```
