@@ -20,8 +20,6 @@
 
 # Local development configuration
 .env
-.env.*
-*.env
 *.log
 
 # ignore .icloud files
@@ -175,8 +173,6 @@ venv.bak/
 
 # Local development configuration
 .env
-.env.*
-*.env
 *.log
 
 # Spyder project settings
