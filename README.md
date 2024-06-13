@@ -4,19 +4,9 @@
 
 ## Backend
 
-### Install pyenv
+### Install python
 
-* https://github.com/pyenv/pyenv
-* Depends on os and your preferred way of installing tools
-
-### Install python using pyenv
-
-* Installs the version of python in `.python-version` file
-
-```bash
-pyenv install
-pyenv rehash
-```
+* Install the version of python in `.python-version` file using the method of your choice
 
 ### Install poetry
 
@@ -32,27 +22,11 @@ poetry config virtualenvs.in-project true
 poetry install --all-extras
 ```
 
-### Install pre-commit hooks
-
-```bash
-poetry run pre-commit install
-```
-
 ## Frontend
-
-### Install nvm
-
-* https://github.com/nvm-sh/nvm
-* Depends on os and your preferred way of installing tools
 
 ### Install node
 
-* Installs the version of node in `.nvmrc` file
-
-```bash
-nvm install
-nvm use
-```
+* Install the version of node in `.nvmrc` file using the method of your choice
 
 ### Install npm
 
@@ -65,12 +39,6 @@ nvm use
 
 ```bash
 npm install
-```
-
-### Install frontend pre-commit hooks
-
-```bash
-npm run dev-prepare
 ```
 
 # Running App
@@ -88,7 +56,7 @@ npm run start
 * If you change the `--port` flag, you will need to update the `VITE_API_HOST` in the `.env` file
 
 ```bash
-poetry run uvicorn backend.main.main:app --port 8001 --reload
+poetry run uvicorn backend.main.main:app --port 8000 --reload
 ```
 
 * Go to http://localhost:8001 to view the root of the backend
