@@ -1,9 +1,9 @@
 from datetime import datetime
 
 from fastapi import FastAPI
-from sqlalchemy import select
+from sqlalchemy import select, text
 
-from backend.main.database import get_data_as_dict
+from backend.main.database import get_data_as_dict, run_query
 from backend.main.sql_models import table_name_to_model
 
 app = FastAPI()
@@ -26,3 +26,12 @@ async def get_data(table_name: str, limit: int = 10):
     query = select(model).limit(limit)
     result = await get_data_as_dict(query)
     return result
+
+
+@app.get("/tables")
+async def get_tables():
+    query = text(
+        "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
+    )
+    result = await run_query(query)
+    return {"tables": result.scalars().all()}
