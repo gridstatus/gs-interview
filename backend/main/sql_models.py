@@ -245,7 +245,7 @@ class SppLoadForecast(Base):
 
 
 def table_name_to_model(table_name):
-    return {
+    table_mapping = {
         "caiso_fuel_mix": CaisoFuelMix,
         "caiso_load": CaisoLoad,
         "caiso_load_forecast": CaisoLoadForecast,
@@ -267,4 +267,9 @@ def table_name_to_model(table_name):
         "spp_fuel_mix": SppFuelMix,
         "spp_load": SppLoad,
         "spp_load_forecast": SppLoadForecast,
-    }[table_name]
+    }
+
+    if table_name not in table_mapping:
+        raise ValueError(f"Unable to find table")
+
+    return table_mapping[table_name]
