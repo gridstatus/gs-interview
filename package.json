@@ -68,8 +68,10 @@
     "lint-fix": "eslint frontend/src --ext js,jsx,ts,tsx --fix",
     "format": "prettier --check \"frontend/src/**/*.{js,jsx,ts,tsx,css}\"",
     "format-fix": "prettier --write \"frontend/src/**/*.{js,jsx,ts,tsx,css}\"",
-    "lint-backend": "black backend --check",
-    "lint-fix-backend": "black backend"
+    "lint-backend": "ruff check backend",
+    "lint-fix-backend": "ruff check backend --fix",
+    "format-backend": "black backend --check",
+    "format-fix-backend": "black backend"
   },
   "eslintConfig": {
     "extends": [

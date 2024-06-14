@@ -270,6 +270,6 @@ def table_name_to_model(table_name):
     }
 
     if table_name not in table_mapping:
-        raise ValueError(f"Unable to find table")
+        raise ValueError("Unable to find table")
 
     return table_mapping[table_name]
