@@ -1,11 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import DataTable from "./components/DataTable";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/data" element={<DataTable />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;

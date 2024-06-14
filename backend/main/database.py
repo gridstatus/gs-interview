@@ -7,7 +7,7 @@ from backend.main.config import settings
 def get_engine():
     ssl_args = {
         "ssl": "require",
-        "server_settings": {"application_name": "gs_demo_development"},
+        "server_settings": {"application_name": "gs_interview_development"},
     }
     db_url = f"postgresql+asyncpg://{settings.postgres_user}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}"  # noqa
 
@@ -33,7 +33,7 @@ async def run_query(query):
         return await session.execute(query)
 
 
-async def get_data_as_dict(query):
+async def get_data_as_list_of_dicts(query):
     result = await run_query(query)
 
     return [row.__dict__ for row in result.scalars().all()]
