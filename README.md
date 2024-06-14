@@ -59,7 +59,18 @@ npm run start
 poetry run uvicorn backend.main.main:app --port 8000 --reload
 ```
 
-* Go to http://localhost:8001 to view the root of the backend
+* Go to http://localhost:8000 to view the root of the backend
 * Assuming the database connection is correct, you can go to the following to see table data
-  * http://localhost:8001/data?table_name=caiso_fuel_mix
-  * http://localhost:8001/data?table_name=ercot_load_forecast
+  * http://localhost:8000/data?table_name=caiso_fuel_mix
+  * http://localhost:8000/data?table_name=ercot_load_forecast
+  * http://localhost:8000/tables to see a list of all tables
+
+# Database
+
+* Only tables in the `PUBLIC` schema need to be supported
+* Any columns beginning with `_` are artifacts of the ETL process and should not be displayed or included in downloads
+
+# Frontend Querying
+
+* You will need to implement querying the backend API server from the frontend
+* One option for doing so is Tanstack Query: https://tanstack.com/query/latest/docs/framework/react/examples/basic
