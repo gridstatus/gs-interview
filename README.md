@@ -1,6 +1,9 @@
-# Installation
+# Grid Status Interview
 
-* Copy `.env.template` to `.env` and fill in the values
+* This repo is used to administer technical interviews for Grid Status
+* If you are interested in working at Grid Status, look for our available jobs at http://gridstatus.io/jobs
+
+# Installation
 
 ## Backend
 
@@ -42,6 +45,8 @@ npm install
 ```
 
 # Running App
+
+* Copy `.env.template` to `.env` and fill in the values
 
 ## Frontend
 
